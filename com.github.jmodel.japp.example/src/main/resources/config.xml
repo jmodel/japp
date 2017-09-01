@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- <!DOCTYPE configuration PUBLIC "-//www.github.com//jmodel//adapter//DTD 
+	Config 0.0.2//EN" "http://www.github.com/jmodel/adapter/dtd/config.dtd"> -->
+<configuration>
+
+	<region id="Adapter">
+		<item id="SearcherAdapter" value="com.github.jmodel.adapter.impl.search.ES5RestSearchAdapter">
+			<property name="_es5_host_list" value="172.18.30.77:9200:http" />
+		</item>
+		<item id="LoggerAdapter" value="com.github.jmodel.adapter.impl.xxx" />
+		<item id="MapperAdapter" value="com.github.jmodel.adapter.impl.xxx" />
+	</region>
+	<region id="Service">
+		<item id="Search" value="com.github.jmodel.japp.service.search.SearchService">
+			<item id="SearchUser">
+				<property name="index" value="/myindex/mytype" />
+				<property name="mappingURIForSearch"
+					value="com.github.jmodel.japp.example.mappings.search.SearchUserUI2Query" />
+				<property name="mappingURIForUI"
+					value="com.github.jmodel.japp.example.mappings.search.SearchUserResult2UI" />
+			</item>
+		</item>
+	</region>
+	<region id="Feature">
+		<item id="Search" value="com.github.jmodel.japp.feature.search.SearchFeature" />
+	</region>
+
+
+</configuration>

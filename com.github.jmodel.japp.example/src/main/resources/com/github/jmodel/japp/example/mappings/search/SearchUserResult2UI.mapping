@@ -1,0 +1,18 @@
+mapping com.github.jmodel.japp.example.mappings.search.SearchUserResult2UI {
+	
+	from: JSON
+	to: JSON
+	
+	Result => UI {   
+		hits => . {
+			total => total;
+			
+			hits[] => list[] {
+				_source => . {
+					A => data;
+					A => b;
+				};
+			};
+		};
+	};
+}
