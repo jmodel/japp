@@ -5,7 +5,7 @@
 
 	<region id="Adapter">
 		<item id="SearcherAdapter" value="com.github.jmodel.adapter.impl.search.ES5RestSearchAdapter">
-			<property name="_es5_host_list" value="172.18.30.77:9200:http" />
+			<property name="_es5_host_list" value="127.0.0.1:9200:http" />
 		</item>
 		<item id="LoggerAdapter" value="com.github.jmodel.adapter.impl.xxx" />
 		<item id="MapperAdapter" value="com.github.jmodel.adapter.impl.xxx" />

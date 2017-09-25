@@ -9,8 +9,8 @@ mapping com.github.jmodel.japp.example.mappings.search.SearchUserResult2UI {
 			
 			hits[] => list[] {
 				_source => . {
-					A => data;
-					A => b;
+					A => id;
+					A => name;
 				};
 			};
 		};
