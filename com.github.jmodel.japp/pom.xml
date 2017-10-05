@@ -22,12 +22,6 @@
 			<artifactId>com.github.jmodel.adapter.impl</artifactId>
 		</dependency>
 
-		<!-- third party -->
-		<dependency>
-			<groupId>javax.ws.rs</groupId>
-			<artifactId>javax.ws.rs-api</artifactId>
-		</dependency>
-
 
 		<!-- for test -->
 		<dependency>

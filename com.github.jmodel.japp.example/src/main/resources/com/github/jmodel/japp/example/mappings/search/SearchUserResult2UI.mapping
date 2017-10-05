@@ -1,7 +1,7 @@
 mapping com.github.jmodel.japp.example.mappings.search.SearchUserResult2UI {
 	
 	from: JSON
-	to: JSON
+	to: JSON 
 	
 	Result => UI {   
 		hits => . {

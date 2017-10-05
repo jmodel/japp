@@ -4,7 +4,8 @@
 <configuration>
 
 	<region id="Adapter">
-		<item id="SearcherAdapter" value="com.github.jmodel.adapter.impl.search.ES5RestSearchAdapter">
+		<item id="SearcherAdapter"
+			value="com.github.jmodel.adapter.impl.search.ES5RestSearchAdapter">
 			<property name="_es5_host_list" value="127.0.0.1:9200:http" />
 		</item>
 		<item id="LoggerAdapter" value="com.github.jmodel.adapter.impl.xxx" />
@@ -24,6 +25,14 @@
 	<region id="Feature">
 		<item id="Search" value="com.github.jmodel.japp.feature.search.SearchFeature" />
 	</region>
-
+	<region id="Controller">
+		<item id="NewsController">
+			<property name="mappingURIForInsertNews"
+				value="com.github.jmodel.japp.example.mappings.search.SearchUserUI2Query" />
+		</item>
+	</region>
+	<region id="Action">
+		<item id="InsertNews" value="com.github.jmodel.japp.example.domain.dao.InsertNews" />
+	</region>
 
 </configuration>
