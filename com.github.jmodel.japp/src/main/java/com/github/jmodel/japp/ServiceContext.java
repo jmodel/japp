@@ -8,13 +8,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author jianni@hotmail.com
  *
  */
-public class ServiceContext {
+public class ServiceContext<D> {
 
 	public final static ObjectMapper objectMapper = new ObjectMapper();
 
 	private Long ownerId;
 
 	private Long traceId;
+
+	private D session;
 
 	public Long getOwnerId() {
 		return ownerId;
@@ -30,6 +32,14 @@ public class ServiceContext {
 
 	public void setTraceId(Long traceId) {
 		this.traceId = traceId;
+	}
+
+	public D getSession() {
+		return session;
+	}
+
+	public void setSession(D session) {
+		this.session = session;
 	}
 
 }

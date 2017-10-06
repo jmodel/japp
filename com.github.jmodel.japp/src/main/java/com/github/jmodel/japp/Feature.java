@@ -12,7 +12,7 @@ import com.github.jmodel.adapter.config.Configurable;
  */
 public abstract class Feature<T> implements Configurable {
 
-	public T perform(ServiceContext ctx, Object... args) throws JappException {
+	public T perform(ServiceContext<?> ctx, Object... args) throws JappException {
 		return null;
 	}
 

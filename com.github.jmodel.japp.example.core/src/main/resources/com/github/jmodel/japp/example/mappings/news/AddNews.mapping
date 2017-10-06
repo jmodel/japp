@@ -1,0 +1,12 @@
+mapping com.github.jmodel.japp.example.mappings.news.AddNews {
+	
+	from: JSON
+	to: BEAN (com.github.jmodel.japp.example.domain.entity.News)
+	 
+	Request => News {
+		
+		title => title;
+		
+		subTitle => subTitle;
+	};
+}

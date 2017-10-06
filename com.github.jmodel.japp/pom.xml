@@ -12,7 +12,7 @@
 	<artifactId>com.github.jmodel.japp</artifactId>
 	<packaging>jar</packaging>
 
-	<name>jmodel japp Core</name>
+	<name>jmodel-japp</name>
 
 	<dependencies>
 

@@ -4,15 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.2.1.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath>../com.github.jmodel.japp.example.parent/pom.xml</relativePath>
+		<groupId>com.github.jmodel.japp.example</groupId>
+		<artifactId>com.github.jmodel.japp.example.parent</artifactId>
+		<version>0.0.2</version>
 	</parent>
 
-	<groupId>com.github.jmodel</groupId>
 	<artifactId>com.github.jmodel.japp.example</artifactId>
-	<version>0.0.2</version>
 	<name>jmodel-japp Example</name>
 
 	<dependencies>
@@ -40,26 +38,27 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
+		<!-- data source -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+
+		<!-- example core -->
+		<dependency>
+			<groupId>com.github.jmodel.japp.example</groupId>
+			<artifactId>com.github.jmodel.japp.example.core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 		<!-- jmodel -->
 		<dependency>
 			<groupId>com.github.jmodel</groupId>
 			<artifactId>com.github.jmodel.japp</artifactId>
-			<version>0.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.jmodel</groupId>
 			<artifactId>com.github.jmodel.adapter.api</artifactId>
-			<version>0.0.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.jmodel</groupId>
-			<artifactId>com.github.jmodel.adapter.impl</artifactId>
-			<version>0.0.2</version>
-		</dependency>
-		<dependency>
-			<groupId>com.github.jmodel</groupId>
-			<artifactId>com.github.jmodel.mapper.impl</artifactId>
-			<version>0.0.2</version>
 		</dependency>
 	</dependencies>
 
@@ -76,14 +75,6 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>

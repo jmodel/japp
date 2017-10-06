@@ -37,10 +37,10 @@ import org.springframework.web.util.WebUtils;
 @EnableZuulProxy
 @EnableOAuth2Sso
 @EnableOAuth2Client
-public class GatewayService {
+public class GatewayServer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GatewayService.class, args);
+		SpringApplication.run(GatewayServer.class, args);
 	}
 
 	@Configuration

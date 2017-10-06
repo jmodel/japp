@@ -6,7 +6,13 @@ import com.github.jmodel.adapter.api.persistence.Action;
 import com.github.jmodel.japp.AbstractAction;
 import com.github.jmodel.japp.example.domain.entity.News;
 
-public class InsertNews extends AbstractAction implements Action<JpaRepository<News, Long>, News, Long> {
+/**
+ * 
+ * 
+ * @author jianni@hotmail.com
+ *
+ */
+public class InsertNewsAction extends AbstractAction implements Action<JpaRepository<News, Long>, News, Long> {
 
 	@Override
 	public Long apply(JpaRepository<News, Long> repository, News news) {
@@ -15,7 +21,7 @@ public class InsertNews extends AbstractAction implements Action<JpaRepository<N
 
 	@Override
 	public String getItemId() {
-		return "InsertNews";
+		return "InsertNewsAction";
 	}
 
 }

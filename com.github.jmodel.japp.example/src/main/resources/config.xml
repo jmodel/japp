@@ -12,7 +12,7 @@
 		<item id="MapperAdapter" value="com.github.jmodel.adapter.impl.xxx" />
 	</region>
 	<region id="Service">
-		<item id="Search" value="com.github.jmodel.japp.service.search.SearchService">
+		<item id="SearchService" value="com.github.jmodel.japp.service.search.SearchService">
 			<item id="SearchUser">
 				<property name="index" value="/myindex/mytype" />
 				<property name="mappingURIForSearch"
@@ -21,18 +21,17 @@
 					value="com.github.jmodel.japp.example.mappings.search.SearchUserResult2UI" />
 			</item>
 		</item>
-	</region>
-	<region id="Feature">
-		<item id="Search" value="com.github.jmodel.japp.feature.search.SearchFeature" />
-	</region>
-	<region id="Controller">
-		<item id="NewsController">
-			<property name="mappingURIForInsertNews"
-				value="com.github.jmodel.japp.example.mappings.search.SearchUserUI2Query" />
+		<item id="AddNewsService">
+			<property name="mAddNews"
+				value="com.github.jmodel.japp.example.mappings.news.AddNews" />
 		</item>
 	</region>
+	<region id="Feature">
+		<item id="SearchFeature" value="com.github.jmodel.japp.feature.search.SearchFeature" />
+	</region>
 	<region id="Action">
-		<item id="InsertNews" value="com.github.jmodel.japp.example.domain.dao.InsertNews" />
+		<item id="InsertNewsAction"
+			value="com.github.jmodel.japp.example.domain.dao.InsertNewsAction" />
 	</region>
 
 </configuration>

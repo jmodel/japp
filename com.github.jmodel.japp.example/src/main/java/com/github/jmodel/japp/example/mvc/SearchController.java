@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.jmodel.japp.Controller;
 import com.github.jmodel.japp.JappException;
 import com.github.jmodel.japp.Service;
+import com.github.jmodel.japp.ServiceContext;
 
 /**
  * 
@@ -25,22 +26,20 @@ public class SearchController extends Controller {
 	@PreAuthorize("hasRole('ROLE_ADMIN') and #oauth2.hasScope('read') or (!#oauth2.isOAuth() and hasRole('ROLE_ADMIN'))")
 	public String searchUser(@PathVariable String searchUser, String requestBody) {
 
-		System.out.println("xxxxxxxxxxxxxxxxxxxxx");
 		try {
 			@SuppressWarnings("unchecked")
-			Service<String, String> searchService = (Service<String, String>) getService("Search");
-			String response = searchService.serve(0L, 0L, requestBody, "Search", searchUser);
+			Service<String, String> service = (Service<String, String>) getService("SearchService");
+			ServiceContext<Void> ctx = new ServiceContext<Void>();
+			ctx.setOwnerId(0L);
+			ctx.setTraceId(0L);
+			
+			String response = service.serve(ctx, requestBody, service.getItemId(), searchUser);
 			return response;
 		} catch (JappException e) {
 			e.printStackTrace();
 		}
 
 		return "{\"id\":\"aaa\",\"content\":\"Hello xxx World\"}";
-	}
-
-	@Override
-	public String getItemId() {
-		return "SearchController";
 	}
 
 }

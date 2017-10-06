@@ -24,7 +24,7 @@ public class SearchService extends Service<String, String> {
 	private final static String OMAP = "mappingURIForUI";
 
 	@Override
-	protected String perform(ServiceContext ctx, String request, String... path) throws JappException {
+	protected String perform(ServiceContext<?> ctx, String request, String... path) throws JappException {
 
 		Configuration conf = ConfigurationLoader.getInstance().getConfiguration();
 
@@ -32,12 +32,12 @@ public class SearchService extends Service<String, String> {
 		String mappingURIForSearch = conf.getValue(IMAP, getRegionId(), path);
 		String mappingURIForUI = conf.getValue(OMAP, getRegionId(), path);
 
-		String featureUrl = conf.getValue(Feature.getRegionId(), "Search");
+		String featureUrl = conf.getValue(Feature.getRegionId(), "SearchFeature");
 		Feature<?> feature = Util.find(featureUrl);
 		if (feature == null) {
 			throw new JappException("Search feature is not found");
 		}
-		
+
 		try {
 			JsonNode requestObj = ServiceContext.objectMapper.readTree(request);
 			return (String) feature.perform(ctx, requestObj, index, mappingURIForSearch, mappingURIForUI);
@@ -48,7 +48,7 @@ public class SearchService extends Service<String, String> {
 
 	@Override
 	public String getItemId() {
-		return "Search";
+		return "SearchService";
 	}
 
 }

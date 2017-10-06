@@ -96,7 +96,7 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.github.jmodel.japp.gateway.GatewayService</mainClass>
+					<mainClass>com.github.jmodel.japp.gateway.GatewayServer</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>

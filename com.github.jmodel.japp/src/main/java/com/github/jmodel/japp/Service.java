@@ -18,10 +18,8 @@ public abstract class Service<T, R> implements Configurable {
 	/**
 	 * Perform service work.
 	 * 
-	 * @param ownerId
-	 *            owner id
-	 * @param traceId
-	 *            trace id
+	 * @param ctx
+	 *            service context
 	 * @param request
 	 *            request
 	 * @param path
@@ -30,16 +28,12 @@ public abstract class Service<T, R> implements Configurable {
 	 * @throws JappException
 	 *             JappException
 	 */
-	public T serve(Long ownerId, Long traceId, R request, String... path) throws JappException {
-
-		ServiceContext ctx = new ServiceContext();
-		ctx.setOwnerId(ownerId);
-		ctx.setTraceId(traceId);
+	public T serve(ServiceContext<?> ctx, R request, String... path) throws JappException {
 
 		return perform(ctx, request, path);
 	}
 
-	protected abstract T perform(ServiceContext ctx, R request, String... path) throws JappException;
+	protected abstract T perform(ServiceContext<?> ctx, R request, String... path) throws JappException;
 
 	public static String getRegionId() {
 		return "Service";

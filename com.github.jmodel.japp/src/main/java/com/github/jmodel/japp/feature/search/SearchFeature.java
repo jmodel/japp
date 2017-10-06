@@ -16,7 +16,7 @@ import com.github.jmodel.japp.ServiceContext;
 public class SearchFeature extends Feature<String> {
 
 	@Override
-	public String perform(ServiceContext ctx, Object... args) throws JappException {
+	public String perform(ServiceContext<?> ctx, Object... args) throws JappException {
 
 		try {
 
@@ -47,7 +47,7 @@ public class SearchFeature extends Feature<String> {
 
 	@Override
 	public String getItemId() {
-		return "Search";
+		return "SearchFeature";
 	}
 
 }
