@@ -11,10 +11,7 @@
 	<name>jmodel japp Parent</name>
 
 	<modules>
-		<module>../com.github.jmodel.japp</module>
-		<module>../com.github.jmodel.japp.example</module>
-		<module>../com.github.jmodel.japp.gateway</module>
-		<module>../com.github.jmodel.japp.oauth2</module>
+		<module>../com.github.jmodel.japp</module>		
 	</modules>
 
 	<url>https://github.com/jmodel/japp</url>
