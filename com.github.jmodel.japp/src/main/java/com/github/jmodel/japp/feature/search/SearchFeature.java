@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.github.jmodel.adapter.Mapper;
 import com.github.jmodel.adapter.Searcher;
 import com.github.jmodel.api.control.Feature;
-import com.github.jmodel.api.control.ServiceContext;
 import com.github.jmodel.japp.utils.JappUtil;
 
 /**
@@ -13,22 +12,21 @@ import com.github.jmodel.japp.utils.JappUtil;
  * @author jianni@hotmail.com
  *
  */
-public class SearchFeature extends Feature<String> {
+public class SearchFeature extends Feature<JsonNode, String> {
 
 	@Override
-	public String perform(ServiceContext<?> ctx, Object... args) {
+	protected String perform(JsonNode inputObject, Object... args) {
 
 		try {
 
-			JsonNode request = (JsonNode) args[0];
-			String index = (String) args[1];
-			String mappingURIForSearch = (String) args[2];
-			String mappingURIForUI = (String) args[3];
+			String index = (String) args[0];
+			String mappingURIForSearch = (String) args[1];
+			String mappingURIForUI = (String) args[2];
 
 			/*
 			 * Prepare query criteria
 			 */
-			String query = Mapper.convert(request, mappingURIForSearch, String.class);
+			String query = Mapper.convert(inputObject, mappingURIForSearch, String.class);
 
 			/*
 			 * Search in search engine

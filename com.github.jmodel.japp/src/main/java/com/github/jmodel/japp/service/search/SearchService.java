@@ -22,7 +22,7 @@ public class SearchService extends Service<String, String> {
 	private final static String OMAP = "mappingURIForUI";
 
 	@F(name = "SearchFeature")
-	private Feature<?> searchFeature;
+	private Feature<JsonNode, ?> searchFeature;
 
 	@Override
 	protected String perform(ServiceContext<?> ctx, String request, String... path) {
@@ -33,7 +33,7 @@ public class SearchService extends Service<String, String> {
 
 		try {
 			JsonNode requestObj = JappUtil.mapper.readTree(request);
-			return (String) searchFeature.perform(ctx, requestObj, index, mappingURIForSearch, mappingURIForUI);
+			return (String) searchFeature.serve(requestObj, index, mappingURIForSearch, mappingURIForUI);
 		} catch (Exception e) {
 			throw new RuntimeException("Search service does not work", e);
 		}
