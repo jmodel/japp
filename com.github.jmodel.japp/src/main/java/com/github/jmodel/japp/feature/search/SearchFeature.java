@@ -3,9 +3,9 @@ package com.github.jmodel.japp.feature.search;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.jmodel.adapter.Mapper;
 import com.github.jmodel.adapter.Searcher;
-import com.github.jmodel.japp.Feature;
-import com.github.jmodel.japp.JappException;
-import com.github.jmodel.japp.ServiceContext;
+import com.github.jmodel.api.control.Feature;
+import com.github.jmodel.api.control.ServiceContext;
+import com.github.jmodel.japp.utils.JappUtil;
 
 /**
  * Query by criteria.
@@ -16,7 +16,7 @@ import com.github.jmodel.japp.ServiceContext;
 public class SearchFeature extends Feature<String> {
 
 	@Override
-	public String perform(ServiceContext<?> ctx, Object... args) throws JappException {
+	public String perform(ServiceContext<?> ctx, Object... args) {
 
 		try {
 
@@ -38,10 +38,10 @@ public class SearchFeature extends Feature<String> {
 			/*
 			 * Change to json for UI presentation
 			 */
-			return Mapper.convert(ServiceContext.objectMapper.readTree(queryResultJson), mappingURIForUI, String.class);
+			return Mapper.convert(JappUtil.mapper.readTree(queryResultJson), mappingURIForUI, String.class);
 
 		} catch (Exception e) {
-			throw new JappException("Failed to search", e);
+			throw new RuntimeException("Failed to search", e);
 		}
 	}
 

@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.jmodel.api.control.Service;
+import com.github.jmodel.api.control.ServiceContext;
 import com.github.jmodel.japp.Controller;
-import com.github.jmodel.japp.Service;
-import com.github.jmodel.japp.ServiceContext;
 import com.github.jmodel.japp.example.domain.dao.NewsRepository;
 
 /**
@@ -36,6 +36,7 @@ public class NewsController extends Controller {
 		try {
 			@SuppressWarnings("unchecked")
 			Service<String, String> service = (Service<String, String>) getService("AddNewsService");
+			
 			ServiceContext<NewsRepository> ctx = new ServiceContext<NewsRepository>();
 			ctx.setOwnerId(0L);
 			ctx.setTraceId(0L);
