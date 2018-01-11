@@ -1,5 +1,5 @@
 mapping com.github.jmodel.japp.example.mappings.news.AddNews {
-	
+	 
 	from: JSON
 	to: BEAN (com.github.jmodel.japp.example.domain.entity.News)
 	 
@@ -8,5 +8,5 @@ mapping com.github.jmodel.japp.example.mappings.news.AddNews {
 		title => title;
 		
 		subTitle => subTitle;
-	};
+	}; 
 }

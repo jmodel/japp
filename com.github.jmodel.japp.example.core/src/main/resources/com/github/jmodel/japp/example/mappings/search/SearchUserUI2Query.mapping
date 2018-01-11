@@ -14,4 +14,4 @@ mapping com.github.jmodel.japp.example.mappings.search.SearchUserUI2Query {
 			};
 		};
 	};
-}
+} 

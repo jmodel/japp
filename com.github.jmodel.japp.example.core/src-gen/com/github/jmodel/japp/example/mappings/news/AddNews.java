@@ -1,7 +1,7 @@
 package com.github.jmodel.japp.example.mappings.news;
 
 import com.github.jmodel.ModelException;
-import com.github.jmodel.api.domain.Model;
+import com.github.jmodel.api.entity.Model;
 import com.github.jmodel.mapper.api.domain.Mapping;
 import java.util.Map;
 
@@ -22,9 +22,9 @@ public class AddNews extends Mapping {
   @Override
   public void init(final Mapping myInstance) {
     super.init(myInstance);
-    com.github.jmodel.api.domain.Entity sourceRootModel = new com.github.jmodel.api.domain.Entity();
+    com.github.jmodel.api.entity.Entity sourceRootModel = new com.github.jmodel.api.entity.Entity();
     myInstance.setSourceTemplateModel(sourceRootModel);
-    com.github.jmodel.api.domain.Entity targetRootModel = new com.github.jmodel.api.domain.Entity();
+    com.github.jmodel.api.entity.Entity targetRootModel = new com.github.jmodel.api.entity.Entity();
     myInstance.setTargetTemplateModel(targetRootModel); 
     		
     myInstance.setFromFormat(com.github.jmodel.FormatEnum.JSON);														
@@ -52,18 +52,18 @@ public class AddNews extends Mapping {
     {
     {
     String fieldValue = null;
-    fieldValue = String.valueOf(com.github.jmodel.api.utils.ModelHelper.getFieldValue(mySourceModel.getFieldPathMap().get("Request.title")));
+    fieldValue = String.valueOf(com.github.jmodel.utils.ModelHelper.getFieldValue(mySourceModel.getFieldPathMap().get("Request.title")));
     myTargetModel.getFieldPathMap().get("News.title").setValue(fieldValue); 
     
-    myTargetModel.getFieldPathMap().get("News.title").setDataType(com.github.jmodel.api.domain.DataTypeEnum.STRING);   
+    myTargetModel.getFieldPathMap().get("News.title").setDataType(com.github.jmodel.api.entity.DataTypeEnum.STRING);   
     
     }
     {
     String fieldValue = null;
-    fieldValue = String.valueOf(com.github.jmodel.api.utils.ModelHelper.getFieldValue(mySourceModel.getFieldPathMap().get("Request.subTitle")));
+    fieldValue = String.valueOf(com.github.jmodel.utils.ModelHelper.getFieldValue(mySourceModel.getFieldPathMap().get("Request.subTitle")));
     myTargetModel.getFieldPathMap().get("News.subTitle").setValue(fieldValue); 
     
-    myTargetModel.getFieldPathMap().get("News.subTitle").setDataType(com.github.jmodel.api.domain.DataTypeEnum.STRING);   
+    myTargetModel.getFieldPathMap().get("News.subTitle").setDataType(com.github.jmodel.api.entity.DataTypeEnum.STRING);   
     
     }
     }

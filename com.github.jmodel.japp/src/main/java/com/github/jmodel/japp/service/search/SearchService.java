@@ -22,18 +22,18 @@ public class SearchService extends Service<String, String> {
 	private final static String OMAP = "mappingURIForUI";
 
 	@F(name = "SearchFeature")
-	private Feature<JsonNode, ?> searchFeature;
+	private Feature<JsonNode, String> searchFeature;
 
 	@Override
 	protected String perform(ServiceContext<?> ctx, String request, String... path) {
 
-		String index = ctx.getConf().getValue(INX, getRegionId(), path);
-		String mappingURIForSearch = ctx.getConf().getValue(IMAP, getRegionId(), path);
-		String mappingURIForUI = ctx.getConf().getValue(OMAP, getRegionId(), path);
+		String index = getProperty(INX);
+		String mappingURIForSearch = getProperty(IMAP);
+		String mappingURIForUI = getProperty(OMAP);
 
 		try {
 			JsonNode requestObj = JappUtil.mapper.readTree(request);
-			return (String) searchFeature.serve(requestObj, index, mappingURIForSearch, mappingURIForUI);
+			return searchFeature.serve(ctx, requestObj, index, mappingURIForSearch, mappingURIForUI);
 		} catch (Exception e) {
 			throw new RuntimeException("Search service does not work", e);
 		}
