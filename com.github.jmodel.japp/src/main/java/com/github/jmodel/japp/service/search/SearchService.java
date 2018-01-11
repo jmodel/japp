@@ -1,8 +1,8 @@
 package com.github.jmodel.japp.service.search;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.jmodel.api.control.F;
-import com.github.jmodel.api.control.Feature;
+import com.github.jmodel.adapter.Mapper;
+import com.github.jmodel.adapter.Searcher;
 import com.github.jmodel.api.control.Service;
 import com.github.jmodel.api.control.ServiceContext;
 import com.github.jmodel.japp.utils.JappUtil;
@@ -21,9 +21,6 @@ public class SearchService extends Service<String, String> {
 
 	private final static String OMAP = "mappingURIForUI";
 
-	@F(name = "SearchFeature")
-	private Feature<JsonNode, String> searchFeature;
-
 	@Override
 	protected String perform(ServiceContext<?> ctx, String request, String... path) {
 
@@ -32,8 +29,23 @@ public class SearchService extends Service<String, String> {
 		String mappingURIForUI = getProperty(OMAP);
 
 		try {
+
 			JsonNode requestObj = JappUtil.mapper.readTree(request);
-			return searchFeature.serve(ctx, requestObj, index, mappingURIForSearch, mappingURIForUI);
+
+			/*
+			 * Prepare query criteria
+			 */
+			String query = Mapper.convert(requestObj, mappingURIForSearch, String.class);
+
+			/*
+			 * Search in search engine
+			 */
+			String queryResultJson = Searcher.search(index, query);
+
+			/*
+			 * Change to json for UI presentation
+			 */
+			return Mapper.convert(JappUtil.mapper.readTree(queryResultJson), mappingURIForUI, String.class);
 		} catch (Exception e) {
 			throw new RuntimeException("Search service does not work", e);
 		}

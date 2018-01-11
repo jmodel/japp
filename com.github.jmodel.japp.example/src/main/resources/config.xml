@@ -26,9 +26,6 @@
 				value="com.github.jmodel.japp.example.mappings.news.AddNews" />
 		</item>
 	</region>
-	<region id="Feature">
-		<item id="SearchFeature" value="com.github.jmodel.japp.feature.search.SearchFeature" />
-	</region>
 	<region id="Action">
 		<item id="InsertNewsAction"
 			value="com.github.jmodel.japp.example.domain.dao.InsertNewsAction" />

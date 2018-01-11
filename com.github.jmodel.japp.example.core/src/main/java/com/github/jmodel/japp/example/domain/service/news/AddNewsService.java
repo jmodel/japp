@@ -23,7 +23,7 @@ public class AddNewsService extends Service<String, String> {
 
 		try {
 
-			String mappingURI = ctx.getConf().getValue(M_ADD_NEWS, getRegionId());
+			String mappingURI = getProperty(M_ADD_NEWS);
 
 			JsonNode requestObj = JappUtil.mapper.readTree(request);
 			News news = Mapper.convert(requestObj, mappingURI, News.class);
