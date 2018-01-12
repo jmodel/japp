@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.jmodel.adapter.Logger;
 import com.github.jmodel.api.control.Service;
 import com.github.jmodel.api.control.ServiceContext;
 import com.github.jmodel.japp.Controller;
+import com.github.jmodel.japp.JappException;
 
 /**
  * 
@@ -20,26 +22,26 @@ import com.github.jmodel.japp.Controller;
 @RestController
 public class SearchController extends Controller {
 
+	private static final Logger logger = Logger.getLogger(SearchController.class.getName());
+	
 	@RequestMapping(value = "/search/{searchUser}", method = RequestMethod.GET, produces = {
 			MediaType.APPLICATION_JSON_VALUE })
 	@PreAuthorize("hasRole('ROLE_ADMIN') and #oauth2.hasScope('read') or (!#oauth2.isOAuth() and hasRole('ROLE_ADMIN'))")
-	public String searchUser(@PathVariable String searchUser, String requestBody) {
+	public String searchUser(@PathVariable String searchUser, String requestBody) throws JappException {
 
 		try {
-			@SuppressWarnings("unchecked")
-			Service<String, String> service = (Service<String, String>) getService("SearchService");
 			
+			Service<String, String> service = getService("SearchService");
+
 			ServiceContext<Void> ctx = new ServiceContext<Void>();
 			ctx.setOwnerId(0L);
 			ctx.setTraceId(0L);
 
-			String response = service.serve(ctx, requestBody, service.getItemId(), searchUser);
-			return response;
+			return service.serve(ctx, requestBody, service.getItemId(), searchUser);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("");
+			throw new JappException("", e);
 		}
-
-		return "{\"id\":\"aaa\",\"content\":\"Hello xxx World\"}";
 	}
 
 }

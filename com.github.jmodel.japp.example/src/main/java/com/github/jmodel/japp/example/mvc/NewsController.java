@@ -34,8 +34,8 @@ public class NewsController extends Controller {
 	public String addNews(HttpEntity<String> httpEntity) {
 
 		try {
-			@SuppressWarnings("unchecked")
-			Service<String, String> service = (Service<String, String>) getService("AddNewsService");
+			
+			Service<String, String> service = getService("AddNewsService");
 			
 			ServiceContext<NewsRepository> ctx = new ServiceContext<NewsRepository>();
 			ctx.setOwnerId(0L);
