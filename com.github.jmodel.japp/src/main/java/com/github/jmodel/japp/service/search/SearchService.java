@@ -22,11 +22,11 @@ public class SearchService extends Service<String, String> {
 	private final static String OMAP = "mappingURIForUI";
 
 	@Override
-	protected String perform(ServiceContext<?> ctx, String request, String... path) {
+	protected String perform(ServiceContext<?> ctx, String request, String path) {
 
-		String index = getProperty(INX);
-		String mappingURIForSearch = getProperty(IMAP);
-		String mappingURIForUI = getProperty(OMAP);
+		String index = getPath(path).getProperty(INX);
+		String mappingURIForSearch = getPath(path).getProperty(IMAP);
+		String mappingURIForUI = getPath(path).getProperty(OMAP);
 
 		try {
 
