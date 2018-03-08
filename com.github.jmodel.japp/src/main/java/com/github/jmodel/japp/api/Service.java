@@ -5,7 +5,7 @@ import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.github.jmodel.ModelException;
-import com.github.jmodel.adapter.api.Configurable;
+import com.github.jmodel.adapter.api.config.Configurable;
 import com.github.jmodel.japp.JappTerms;
 
 /**

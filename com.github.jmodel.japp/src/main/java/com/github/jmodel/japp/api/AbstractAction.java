@@ -2,7 +2,7 @@ package com.github.jmodel.japp.api;
 
 import java.util.Properties;
 
-import com.github.jmodel.adapter.api.Configurable;
+import com.github.jmodel.adapter.api.config.Configurable;
 import com.github.jmodel.japp.JappTerms;
 
 /**
