@@ -3,8 +3,9 @@ package com.github.jmodel.japp.service.search;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.jmodel.adapter.Mapper;
 import com.github.jmodel.adapter.Searcher;
-import com.github.jmodel.api.control.Service;
-import com.github.jmodel.api.control.ServiceContext;
+import com.github.jmodel.japp.JappTerms;
+import com.github.jmodel.japp.api.Service;
+import com.github.jmodel.japp.api.ServiceContext;
 import com.github.jmodel.japp.utils.JappUtil;
 
 /**
@@ -35,17 +36,17 @@ public class SearchService extends Service<String, String> {
 			/*
 			 * Prepare query criteria
 			 */
-			String query = Mapper.convert(requestObj, mappingURIForSearch, String.class);
+			String query = Mapper.getMapper().convert(requestObj, mappingURIForSearch, String.class);
 
 			/*
 			 * Search in search engine
 			 */
-			String queryResultJson = Searcher.search(index, query);
+			String queryResultJson = Searcher.getSearcher().search(index, query);
 
 			/*
 			 * Change to json for UI presentation
 			 */
-			return Mapper.convert(JappUtil.mapper.readTree(queryResultJson), mappingURIForUI, String.class);
+			return Mapper.getMapper().convert(JappUtil.mapper.readTree(queryResultJson), mappingURIForUI, String.class);
 		} catch (Exception e) {
 			throw new RuntimeException("Search service does not work", e);
 		}
@@ -53,7 +54,7 @@ public class SearchService extends Service<String, String> {
 
 	@Override
 	public String getItemId() {
-		return "SearchService";
+		return JappTerms.SEARCH;
 	}
 
 }

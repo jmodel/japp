@@ -1,8 +1,8 @@
 package com.github.jmodel.japp;
 
-import com.github.jmodel.adapter.utils.AdapterUtil;
-import com.github.jmodel.api.control.ControlEnum;
-import com.github.jmodel.api.control.Service;
+import com.github.jmodel.adapter.api.config.ConfigurationManager;
+import com.github.jmodel.japp.api.SService;
+import com.github.jmodel.japp.api.Service;
 
 /**
  * 
@@ -14,15 +14,14 @@ import com.github.jmodel.api.control.Service;
  */
 public abstract class Controller {
 
-	protected <I, R> Service<I, R> getService(String serviceId) throws JappException {
+	private final static SService _service_sp = SService.getInstance();
 
-		try {
-			
-			Service<I, R> service = AdapterUtil.findObject(ControlEnum.SERVICE, serviceId);
-			return service;
-		} catch (Exception e) {
-			throw new JappException("Failed to get service", e);
-		}
+	//
+
+	@SuppressWarnings("unchecked")
+	protected <T1, T2> Service<T1, T2> getService(String itemId) {
+		return (Service<T1, T2>) _service_sp
+				.getService(ConfigurationManager.getInstance().getItemValue(JappTerms.SERVICE, itemId));
 	}
 
 }
