@@ -19,7 +19,7 @@ public class ServiceFactoryImpl implements ServiceFactory {
 
 	public ServiceFactoryImpl() {
 		map = new TreeMap<String, Service<?, ?>>();
-		map.put(JappTerms.SEARCH, new SearchService());
+		map.put(JappTerms.SEARCH.toString(), new SearchService());
 	}
 
 	public Service<?, ?> getService(String serviceId) {

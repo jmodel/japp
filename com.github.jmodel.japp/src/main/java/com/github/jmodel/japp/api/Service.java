@@ -5,7 +5,9 @@ import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.github.jmodel.ModelException;
+import com.github.jmodel.adapter.api.TermAware;
 import com.github.jmodel.adapter.api.config.Configurable;
+import com.github.jmodel.adapter.spi.Term;
 import com.github.jmodel.japp.JappTerms;
 
 /**
@@ -13,21 +15,22 @@ import com.github.jmodel.japp.JappTerms;
  * 
  * @author jianni@hotmail.com
  * 
+ * 
  * @param <T>
  *            value type of return
  * @param <R>
  *            value type of request
  *
  */
-public abstract class Service<T, R> implements Configurable {
+public abstract class Service<T, R> implements Configurable, TermAware {
 
 	private static Properties properties = new Properties();
 
 	private static Map<String, Path> pathMap = new ConcurrentHashMap<String, Path>();
 
 	@Override
-	public String getRegionId() {
-		return JappTerms.SERVICE;
+	public Term getRegionTerm() {
+		return tfs.getTerm(JappTerms.SERVICE);
 	}
 
 	public T serve(ServiceContext<?> ctx, R request) throws ModelException {

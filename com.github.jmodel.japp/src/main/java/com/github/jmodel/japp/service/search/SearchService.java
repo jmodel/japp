@@ -3,6 +3,7 @@ package com.github.jmodel.japp.service.search;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.jmodel.adapter.Mapper;
 import com.github.jmodel.adapter.Searcher;
+import com.github.jmodel.adapter.spi.Term;
 import com.github.jmodel.japp.JappTerms;
 import com.github.jmodel.japp.api.Service;
 import com.github.jmodel.japp.api.ServiceContext;
@@ -53,8 +54,8 @@ public class SearchService extends Service<String, String> {
 	}
 
 	@Override
-	public String getItemId() {
-		return JappTerms.SEARCH;
+	public Term getItemTerm() {
+		return tfs.getTerm(JappTerms.SEARCH);
 	}
 
 }

@@ -3,7 +3,9 @@ package com.github.jmodel.japp.api;
 import java.util.Properties;
 
 import com.github.jmodel.ModelException;
+import com.github.jmodel.adapter.api.TermAware;
 import com.github.jmodel.adapter.api.config.Configurable;
+import com.github.jmodel.adapter.spi.Term;
 import com.github.jmodel.japp.JappTerms;
 
 /**
@@ -14,7 +16,7 @@ import com.github.jmodel.japp.JappTerms;
  * @param <T>
  *            value type of return
  */
-public abstract class Feature<I, T> implements Configurable {
+public abstract class Feature<I, T> implements Configurable, TermAware {
 
 	private Properties properties;
 
@@ -40,8 +42,8 @@ public abstract class Feature<I, T> implements Configurable {
 	}
 
 	@Override
-	public String getRegionId() {
-		return JappTerms.FEATURE;
+	public Term getRegionTerm() {
+		return tfs.getTerm(JappTerms.FEATURE);
 	}
 
 }

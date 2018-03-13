@@ -1,14 +1,16 @@
 package com.github.jmodel.japp;
 
-public interface JappTerms {
+public class JappTerms {
 
 	// Service
-	public static final String SERVICE = "Service";
-	public static final String SEARCH = "Search";
+	public final static String SERVICE = "Service";
+
+	public final static String SEARCH = "Search";
 
 	// Feature
-	public static final String FEATURE = "Feature";
+	public final static String FEATURE = "Feature";
 
 	// Action
-	public static final String ACTION = "Action";
+	public final static String ACTION = "Action";
+
 }

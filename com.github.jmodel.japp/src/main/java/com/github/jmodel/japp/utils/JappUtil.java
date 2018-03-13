@@ -24,20 +24,20 @@ public final class JappUtil implements ConfigurationAware {
 
 	@SuppressWarnings("unchecked")
 	public static <T1, T2> Service<T1, T2> getService(String itemId) {
-		return (Service<T1, T2>) _service_sp.getService(cm.getItemValue(JappTerms.SERVICE, itemId));
+		return (Service<T1, T2>) _service_sp.getService(cm.getItemValue(JappTerms.SERVICE.toString(), itemId));
 	}
 
 	//
 
 	@SuppressWarnings("unchecked")
 	public static <T1, T2> Feature<T1, T2> getFeature(String itemId) {
-		return (Feature<T1, T2>) _feature_sp.getFeature(cm.getItemValue(JappTerms.FEATURE, itemId));
+		return (Feature<T1, T2>) _feature_sp.getFeature(cm.getItemValue(JappTerms.FEATURE.toString(), itemId));
 	}
 
 	//
 
 	@SuppressWarnings("unchecked")
 	public static <T1, T2, T3> Action<T1, T2, T3> getAction(String itemId) {
-		return (Action<T1, T2, T3>) _action_sp.getAction(cm.getItemValue(JappTerms.ACTION, itemId));
+		return (Action<T1, T2, T3>) _action_sp.getAction(cm.getItemValue(JappTerms.ACTION.toString(), itemId));
 	}
 }
