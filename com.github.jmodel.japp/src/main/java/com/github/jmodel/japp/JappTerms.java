@@ -1,6 +1,6 @@
 package com.github.jmodel.japp;
 
-public class JappTerms {
+public interface JappTerms {
 
 	// Service
 	public final static String SERVICE = "Service";

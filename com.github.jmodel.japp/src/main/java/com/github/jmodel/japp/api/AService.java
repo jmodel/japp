@@ -12,9 +12,9 @@ import com.github.jmodel.japp.spi.ActionFactory;
  * @author jianni@hotmail.com
  *
  */
-public class AService {
+public final class AService {
 
-	private static AService aservice;
+	private static AService service;
 
 	private ServiceLoader<ActionFactory> loader;
 
@@ -22,11 +22,17 @@ public class AService {
 		loader = ServiceLoader.load(ActionFactory.class);
 	}
 
-	public static synchronized AService getInstance() {
-		if (aservice == null) {
-			aservice = new AService();
+	public static AService getInstance() {
+		if (service != null) {
+			return service;
 		}
-		return aservice;
+
+		synchronized (AService.class) {
+			if (service == null) {
+				service = new AService();
+			}
+			return service;
+		}
 	}
 
 	public Action<?, ?, ?> getAction(String actionId) {

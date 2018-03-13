@@ -9,7 +9,7 @@ import com.github.jmodel.japp.spi.ActionFactory;
  * @author jianni@hotmail.com
  *
  */
-public class ActionFactoryImpl implements ActionFactory {
+public final class ActionFactoryImpl implements ActionFactory {
 
 	@Override
 	public Action<?, ?, ?> getAction(String actionId) {

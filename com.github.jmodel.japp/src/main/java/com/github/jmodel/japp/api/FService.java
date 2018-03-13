@@ -11,9 +11,9 @@ import com.github.jmodel.japp.spi.FeatureFactory;
  * @author jianni@hotmail.com
  *
  */
-public class FService {
+public final class FService {
 
-	private static FService fservice;
+	private static FService service;
 
 	private ServiceLoader<FeatureFactory> loader;
 
@@ -21,11 +21,18 @@ public class FService {
 		loader = ServiceLoader.load(FeatureFactory.class);
 	}
 
-	public static synchronized FService getInstance() {
-		if (fservice == null) {
-			fservice = new FService();
+	public static FService getInstance() {
+
+		if (service != null) {
+			return service;
 		}
-		return fservice;
+
+		synchronized (FService.class) {
+			if (service == null) {
+				service = new FService();
+			}
+			return service;
+		}
 	}
 
 	public Feature<?, ?> getFeature(String featureId) {

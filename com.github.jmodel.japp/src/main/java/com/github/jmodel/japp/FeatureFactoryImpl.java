@@ -9,7 +9,7 @@ import com.github.jmodel.japp.spi.FeatureFactory;
  * @author jianni@hotmail.com
  *
  */
-public class FeatureFactoryImpl implements FeatureFactory {
+public final class FeatureFactoryImpl implements FeatureFactory {
 
 	public Feature<?, ?> getFeature(String featureId) {
 		return null;

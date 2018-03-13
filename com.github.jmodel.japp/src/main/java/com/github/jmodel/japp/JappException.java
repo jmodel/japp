@@ -7,7 +7,7 @@ package com.github.jmodel.japp;
  * @author jianni@hotmail.com
  *
  */
-public class JappException extends Exception {
+public final class JappException extends Exception {
 
 	private static final long serialVersionUID = 5049750180833027559L;
 

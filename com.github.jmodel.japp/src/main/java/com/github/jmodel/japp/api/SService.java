@@ -11,7 +11,7 @@ import com.github.jmodel.japp.spi.ServiceFactory;
  * @author jianni@hotmail.com
  *
  */
-public class SService {
+public final class SService {
 
 	private static SService sservice;
 
@@ -21,11 +21,18 @@ public class SService {
 		loader = ServiceLoader.load(ServiceFactory.class);
 	}
 
-	public static synchronized SService getInstance() {
-		if (sservice == null) {
-			sservice = new SService();
+	public static SService getInstance() {
+
+		if (sservice != null) {
+			return sservice;
 		}
-		return sservice;
+
+		synchronized (SService.class) {
+			if (sservice == null) {
+				sservice = new SService();
+			}
+			return sservice;
+		}
 	}
 
 	public Service<?, ?> getService(String serviceId) {
