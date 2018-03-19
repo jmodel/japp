@@ -5,9 +5,9 @@ import com.github.jmodel.adapter.Mapper;
 import com.github.jmodel.adapter.Searcher;
 import com.github.jmodel.adapter.spi.Term;
 import com.github.jmodel.japp.JappTerms;
+import com.github.jmodel.japp.api.Japp;
 import com.github.jmodel.japp.api.Service;
 import com.github.jmodel.japp.api.ServiceContext;
-import com.github.jmodel.japp.utils.JappUtil;
 
 /**
  * Generic search service.
@@ -32,7 +32,7 @@ public class SearchService extends Service<String, String> {
 
 		try {
 
-			JsonNode requestObj = JappUtil.mapper.readTree(request);
+			JsonNode requestObj = Japp.mapper.readTree(request);
 
 			/*
 			 * Prepare query criteria
@@ -47,7 +47,7 @@ public class SearchService extends Service<String, String> {
 			/*
 			 * Change to json for UI presentation
 			 */
-			return Mapper.getMapper().convert(JappUtil.mapper.readTree(queryResultJson), mappingURIForUI, String.class);
+			return Mapper.getMapper().convert(Japp.mapper.readTree(queryResultJson), mappingURIForUI, String.class);
 		} catch (Exception e) {
 			throw new RuntimeException("Search service does not work", e);
 		}

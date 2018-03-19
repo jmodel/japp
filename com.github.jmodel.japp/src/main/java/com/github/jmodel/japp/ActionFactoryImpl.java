@@ -1,5 +1,7 @@
 package com.github.jmodel.japp;
 
+import java.util.SortedMap;
+
 import com.github.jmodel.adapter.api.persistence.Action;
 import com.github.jmodel.japp.spi.ActionFactory;
 
@@ -9,11 +11,10 @@ import com.github.jmodel.japp.spi.ActionFactory;
  * @author jianni@hotmail.com
  *
  */
-public final class ActionFactoryImpl implements ActionFactory {
+public final class ActionFactoryImpl extends ActionFactory {
 
 	@Override
-	public Action<?, ?, ?> getAction(String actionId) {
-		return null;
-	}
+	protected void createActions(SortedMap<String, Action<?, ?, ?>> map) {
 
+	}
 }

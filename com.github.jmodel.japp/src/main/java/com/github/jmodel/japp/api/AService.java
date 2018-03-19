@@ -12,7 +12,7 @@ import com.github.jmodel.japp.spi.ActionFactory;
  * @author jianni@hotmail.com
  *
  */
-public final class AService {
+final class AService {
 
 	private static AService service;
 
@@ -42,7 +42,7 @@ public final class AService {
 		Iterator<ActionFactory> actionFactorys = loader.iterator();
 		while (action == null && actionFactorys.hasNext()) {
 			ActionFactory actionFactory = actionFactorys.next();
-			action = actionFactory.getAction(actionId);
+			action = actionFactory.create(actionId);
 		}
 
 		return action;

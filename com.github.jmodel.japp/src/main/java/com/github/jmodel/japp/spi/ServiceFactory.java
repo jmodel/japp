@@ -1,5 +1,9 @@
 package com.github.jmodel.japp.spi;
 
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+import com.github.jmodel.adapter.spi.Factory;
 import com.github.jmodel.japp.api.Service;
 
 /**
@@ -8,8 +12,12 @@ import com.github.jmodel.japp.api.Service;
  * @author jianni@hotmail.com
  *
  */
-public interface ServiceFactory {
+public abstract class ServiceFactory extends Factory<Service<?, ?>> {
 
-	public Service<?, ?> getService(String serviceId);
+	protected final void init() {
+		map = new TreeMap<String, Service<?, ?>>();
+		createServices(map);
+	}
 
+	protected abstract void createServices(SortedMap<String, Service<?, ?>> map);
 }

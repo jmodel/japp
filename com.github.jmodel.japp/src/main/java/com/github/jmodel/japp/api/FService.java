@@ -11,7 +11,7 @@ import com.github.jmodel.japp.spi.FeatureFactory;
  * @author jianni@hotmail.com
  *
  */
-public final class FService {
+final class FService {
 
 	private static FService service;
 
@@ -42,7 +42,7 @@ public final class FService {
 		Iterator<FeatureFactory> featureFactorys = loader.iterator();
 		while (feature == null && featureFactorys.hasNext()) {
 			FeatureFactory featureFactory = featureFactorys.next();
-			feature = featureFactory.getFeature(featureId);
+			feature = featureFactory.create(featureId);
 		}
 
 		return feature;

@@ -4,10 +4,11 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.github.jmodel.ModelException;
+import com.github.jmodel.adapter.api.ManagedObject;
 import com.github.jmodel.adapter.api.TermAware;
 import com.github.jmodel.adapter.api.config.Configurable;
 import com.github.jmodel.adapter.spi.Term;
+import com.github.jmodel.japp.JappException;
 import com.github.jmodel.japp.JappTerms;
 
 /**
@@ -22,7 +23,7 @@ import com.github.jmodel.japp.JappTerms;
  *            value type of request
  *
  */
-public abstract class Service<T, R> implements Configurable, TermAware {
+public abstract class Service<T, R> extends ManagedObject implements Configurable, TermAware {
 
 	private static Properties properties = new Properties();
 
@@ -33,7 +34,9 @@ public abstract class Service<T, R> implements Configurable, TermAware {
 		return tfs.getTerm(JappTerms.SERVICE);
 	}
 
-	public T serve(ServiceContext<?> ctx, R request) throws ModelException {
+	//
+
+	public T serve(ServiceContext<?> ctx, R request) throws JappException {
 		return serve(ctx, request, null);
 	}
 
@@ -47,15 +50,13 @@ public abstract class Service<T, R> implements Configurable, TermAware {
 	 * @param path
 	 *            path
 	 * @return arbitrary object
-	 * @throws ModelException
-	 *             ModelException
+	 * @throws JappException
+	 *             JappException
 	 */
-	public T serve(ServiceContext<?> ctx, R request, String path) throws ModelException {
-
+	public final T serve(ServiceContext<?> ctx, R request, String path) throws JappException {
+		checkLegality(Japp.hashCode);
 		return perform(ctx, request, path);
 	}
-
-	protected abstract T perform(ServiceContext<?> ctx, R request, String path) throws ModelException;
 
 	public Properties getProperties() {
 		return properties;
@@ -72,5 +73,9 @@ public abstract class Service<T, R> implements Configurable, TermAware {
 	public Path getPath(String key) {
 		return pathMap.get(key);
 	}
+
+	//
+
+	protected abstract T perform(ServiceContext<?> ctx, R request, String path) throws JappException;
 
 }

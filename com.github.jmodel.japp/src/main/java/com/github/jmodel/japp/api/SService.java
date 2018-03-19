@@ -11,7 +11,7 @@ import com.github.jmodel.japp.spi.ServiceFactory;
  * @author jianni@hotmail.com
  *
  */
-public final class SService {
+final class SService {
 
 	private static SService sservice;
 
@@ -42,7 +42,7 @@ public final class SService {
 		Iterator<ServiceFactory> serviceFactorys = loader.iterator();
 		while (service == null && serviceFactorys.hasNext()) {
 			ServiceFactory serviceFactory = serviceFactorys.next();
-			service = serviceFactory.getService(serviceId);
+			service = serviceFactory.create(serviceId);
 		}
 
 		return service;

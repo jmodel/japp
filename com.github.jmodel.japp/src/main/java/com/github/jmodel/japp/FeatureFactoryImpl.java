@@ -1,5 +1,7 @@
 package com.github.jmodel.japp;
 
+import java.util.SortedMap;
+
 import com.github.jmodel.japp.api.Feature;
 import com.github.jmodel.japp.spi.FeatureFactory;
 
@@ -9,10 +11,11 @@ import com.github.jmodel.japp.spi.FeatureFactory;
  * @author jianni@hotmail.com
  *
  */
-public final class FeatureFactoryImpl implements FeatureFactory {
+public final class FeatureFactoryImpl extends FeatureFactory {
 
-	public Feature<?, ?> getFeature(String featureId) {
-		return null;
+	@Override
+	protected void createFeatures(SortedMap<String, Feature<?, ?>> map) {
+
 	}
 
 }
