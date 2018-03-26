@@ -16,7 +16,7 @@ public class ServiceFactoryImpl extends ServiceFactory {
 
 	@Override
 	protected void createServices(SortedMap<String, Service<?, ?>> map) {
-		map.put(JappTerms.SEARCH, new SearchService());		
+		map.put(JappTerms.SERVICE_SEARCH, new SearchService());		
 	}
 
 }

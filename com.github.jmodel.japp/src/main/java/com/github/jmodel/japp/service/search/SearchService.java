@@ -1,8 +1,11 @@
 package com.github.jmodel.japp.service.search;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.github.jmodel.adapter.AdapterTerms;
+import com.github.jmodel.adapter.Logger;
 import com.github.jmodel.adapter.Mapper;
 import com.github.jmodel.adapter.Searcher;
+import com.github.jmodel.adapter.api.MonitorInfo;
 import com.github.jmodel.adapter.spi.Term;
 import com.github.jmodel.japp.JappTerms;
 import com.github.jmodel.japp.api.Japp;
@@ -17,18 +20,15 @@ import com.github.jmodel.japp.api.ServiceContext;
  */
 public class SearchService extends Service<String, String> {
 
-	private final static String INX = "index";
-
-	private final static String IMAP = "mappingURIForSearch";
-
-	private final static String OMAP = "mappingURIForUI";
+	private final static Logger logger = Logger.getLogger(SearchService.class.getName());
 
 	@Override
-	protected String perform(ServiceContext<?> ctx, String request, String path) {
+	protected String perform(ServiceContext<?> ctx, String request, String... path) {
 
-		String index = getPath(path).getProperty(INX);
-		String mappingURIForSearch = getPath(path).getProperty(IMAP);
-		String mappingURIForUI = getPath(path).getProperty(OMAP);
+		String index = cm.getPropertyValue(JappTerms.SERVICE_SEARCH_INDEX, JappTerms.SERVICE, path);
+		String mappingURIForSearch = cm.getPropertyValue(JappTerms.SERVICE_SEARCH_MAPPINGURIFORSEARCH,
+				JappTerms.SERVICE, path);
+		String mappingURIForUI = cm.getPropertyValue(JappTerms.SERVICE_SEARCH_MAPPINGURIFORUI, JappTerms.SERVICE, path);
 
 		try {
 
@@ -55,7 +55,13 @@ public class SearchService extends Service<String, String> {
 
 	@Override
 	public Term getItemTerm() {
-		return tfs.getTerm(JappTerms.SEARCH);
+		return tfs.getTerm(JappTerms.SERVICE_SEARCH);
+	}
+
+	@Override
+	protected void reportMe(MonitorInfo monitorInfo) {
+		logger.info(tfs.getTerm(AdapterTerms.LOGGER_PFM),
+				() -> "execution time: " + monitorInfo.getExecutionTime() + "ms");
 	}
 
 }

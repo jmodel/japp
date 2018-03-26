@@ -1,9 +1,8 @@
 package com.github.jmodel.japp.api;
 
-import java.util.Properties;
-
 import com.github.jmodel.ModelException;
 import com.github.jmodel.adapter.api.ManagedObject;
+import com.github.jmodel.adapter.api.MonitorInfo;
 import com.github.jmodel.adapter.api.TermAware;
 import com.github.jmodel.adapter.api.config.Configurable;
 import com.github.jmodel.adapter.spi.Term;
@@ -18,8 +17,6 @@ import com.github.jmodel.japp.JappTerms;
  *            value type of return
  */
 public abstract class Feature<I, T> extends ManagedObject implements Configurable, TermAware {
-
-	private Properties properties;
 
 	//
 
@@ -39,19 +36,17 @@ public abstract class Feature<I, T> extends ManagedObject implements Configurabl
 
 		// TODO handle trace, security, ...
 
-		return perform(inputObject, args);
-	}
-
-	public Properties getProperties() {
-		return properties;
-	}
-
-	public void setProperties(Properties properties) {
-		this.properties = properties;
-	}
-
-	public String getProperty(String key) {
-		return (String) properties.get(key);
+		T r;
+		if (isMonitored()) {
+			long c = System.currentTimeMillis();
+			r = perform(inputObject, args);
+			MonitorInfo monitorInfo = new MonitorInfo();
+			monitorInfo.setExecutionTime((System.currentTimeMillis() - c) / 1000);
+			reportMe(monitorInfo);
+		} else {
+			r = perform(inputObject, args);
+		}
+		return r;
 	}
 
 	//
