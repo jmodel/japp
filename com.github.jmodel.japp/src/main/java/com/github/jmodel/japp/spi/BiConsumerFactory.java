@@ -16,9 +16,9 @@ public abstract class BiConsumerFactory extends Factory<BiConsumer<?, ?>> {
 
 	protected final void init() {
 		map = new TreeMap<String, BiConsumer<?, ?>>();
-		create(map);
+		register(map);
 	}
 
-	protected abstract void create(SortedMap<String, BiConsumer<?, ?>> map);
+	protected abstract void register(SortedMap<String, BiConsumer<?, ?>> map);
 
 }
