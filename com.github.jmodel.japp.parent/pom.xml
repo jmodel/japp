@@ -11,7 +11,7 @@
 	<name>jmodel japp Parent</name>
 
 	<modules>
-		<module>../com.github.jmodel.japp</module>		
+		<module>../com.github.jmodel.japp</module>
 	</modules>
 
 	<url>https://github.com/jmodel/japp</url>
@@ -175,6 +175,14 @@
 					<configuration>
 						<source>${jdk.version}</source>
 						<target>${jdk.version}</target>
+						<compilerArgument>-proc:none</compilerArgument>
+						<annotationProcessorPaths>
+							<path>
+								<groupId>com.google.dagger</groupId>
+								<artifactId>dagger-compiler</artifactId>
+								<version>2.16</version>
+							</path>
+						</annotationProcessorPaths>
 					</configuration>
 				</plugin>
 				<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-gpg-plugin</artifactId> 

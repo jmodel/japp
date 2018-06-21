@@ -1,11 +1,11 @@
 package com.github.jmodel.japp.api;
 
-import com.github.jmodel.ModelException;
 import com.github.jmodel.adapter.api.ManagedObject;
 import com.github.jmodel.adapter.api.MonitorInfo;
 import com.github.jmodel.adapter.api.TermAware;
 import com.github.jmodel.adapter.api.config.Configurable;
 import com.github.jmodel.adapter.spi.Term;
+import com.github.jmodel.japp.JappException;
 import com.github.jmodel.japp.JappTerms;
 
 /**
@@ -27,7 +27,7 @@ public abstract class Feature<I, T> extends ManagedObject implements Configurabl
 
 	//
 
-	public final T serve(ServiceContext<?> ctx, I inputObject, Object... args) throws ModelException {
+	public final T serve(ServiceContext<?> ctx, I inputObject, Object... args) throws JappException {
 
 		/*
 		 * ensure feature instance is created by Japp
@@ -51,6 +51,6 @@ public abstract class Feature<I, T> extends ManagedObject implements Configurabl
 
 	//
 
-	protected abstract T perform(I inputObject, Object... args) throws ModelException;
+	protected abstract T perform(I inputObject, Object... args) throws JappException;
 
 }
