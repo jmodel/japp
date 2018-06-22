@@ -7,7 +7,7 @@
 		<item id="ExampleService" value="ExampleService" />
 	</region>
 	<region id="Feature">
-		<item id="ExampleFeature" value="com.github.jmodel.japp.example.feature.ExampleFeature" />
+		<item id="ExampleFeature" value="ExampleFeature" />
 	</region>
 
 </configuration>

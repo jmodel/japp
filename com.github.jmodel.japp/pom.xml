@@ -21,22 +21,6 @@
 			<groupId>com.github.jmodel</groupId>
 			<artifactId>com.github.jmodel.adapter.impl</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.dagger</groupId>
-			<artifactId>dagger</artifactId>
-			<version>2.16</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.dagger</groupId>
-			<artifactId>dagger-compiler</artifactId>
-			<version>2.16</version>
-			<scope>provided</scope>
-		</dependency>
 
 		<!-- for test -->
 		<dependency>

@@ -1,18 +1,15 @@
 package com.github.jmodel.japp.example.service;
 
-import javax.inject.Inject;
-
 import com.github.jmodel.adapter.api.MonitorInfo;
 import com.github.jmodel.adapter.spi.Term;
 import com.github.jmodel.japp.JappException;
+import com.github.jmodel.japp.api.Feature;
+import com.github.jmodel.japp.api.Japp;
 import com.github.jmodel.japp.api.Service;
 import com.github.jmodel.japp.api.ServiceContext;
-import com.github.jmodel.japp.example.feature.ExampleFeature;
+import com.github.jmodel.japp.example.JappExampleTerms;
 
 public class ExampleService extends Service<String, String> {
-
-	@Inject
-	ExampleFeature exampleFeature;
 
 	@Override
 	public Term getItemTerm() {
@@ -22,7 +19,8 @@ public class ExampleService extends Service<String, String> {
 
 	@Override
 	protected String perform(ServiceContext<?> ctx, String request, String... path) throws JappException {
-		DaggerExampleServiceComponent.create().inject(this);
+		
+		Feature<String, String> exampleFeature = Japp.getFeature(JappExampleTerms.SERVICE_EXAMPLE);
 		exampleFeature.serve(ctx, request);
 		return null;
 	}

@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.jmodel.adapter.Logger;
-import com.github.jmodel.japp.api.Service;
-import com.github.jmodel.japp.api.ServiceContext;
 import com.github.jmodel.japp.Controller;
 import com.github.jmodel.japp.JappException;
 import com.github.jmodel.japp.api.Japp;
+import com.github.jmodel.japp.api.Service;
+import com.github.jmodel.japp.api.ServiceContext;
 
 /**
  * 
@@ -35,7 +35,7 @@ public class ExampleController extends Controller {
 			ctx.setTraceId(0L);
 
 			return service.serve(ctx, requestBody);
-			
+
 		} catch (Exception e) {
 			logger.info(() -> "");
 			throw new JappException("", e);
