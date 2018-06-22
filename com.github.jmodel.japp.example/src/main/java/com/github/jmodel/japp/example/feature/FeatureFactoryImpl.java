@@ -7,7 +7,7 @@ import com.github.jmodel.japp.example.JappExampleTerms;
 import com.github.jmodel.japp.spi.FeatureFactory;
 
 /**
- * Service factory implementation.
+ * Feature factory implementation.
  * 
  * @author jianni@hotmail.com
  *
@@ -16,8 +16,7 @@ public class FeatureFactoryImpl extends FeatureFactory {
 
 	@Override
 	protected void createFeatures(SortedMap<String, Feature<?, ?>> map) {
-		map.put(JappExampleTerms.SERVICE_EXAMPLE, new ExampleFeature());
-
+		map.put(JappExampleTerms.FEATURE_EXAMPLE, new ExampleFeature());
 	}
 
 }

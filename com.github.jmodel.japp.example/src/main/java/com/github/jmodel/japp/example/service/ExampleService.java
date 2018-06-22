@@ -19,8 +19,8 @@ public class ExampleService extends Service<String, String> {
 
 	@Override
 	protected String perform(ServiceContext<?> ctx, String request, String... path) throws JappException {
-		
-		Feature<String, String> exampleFeature = Japp.getFeature(JappExampleTerms.SERVICE_EXAMPLE);
+
+		Feature<String, String> exampleFeature = Japp.getFeature(JappExampleTerms.FEATURE_EXAMPLE);
 		exampleFeature.serve(ctx, request);
 		return null;
 	}

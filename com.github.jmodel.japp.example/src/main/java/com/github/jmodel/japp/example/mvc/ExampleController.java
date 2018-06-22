@@ -11,6 +11,7 @@ import com.github.jmodel.japp.JappException;
 import com.github.jmodel.japp.api.Japp;
 import com.github.jmodel.japp.api.Service;
 import com.github.jmodel.japp.api.ServiceContext;
+import com.github.jmodel.japp.example.JappExampleTerms;
 
 /**
  * 
@@ -28,7 +29,7 @@ public class ExampleController extends Controller {
 
 		try {
 
-			Service<String, String> service = Japp.getService("ExampleService");
+			Service<String, String> service = Japp.getService(JappExampleTerms.SERVICE_EXAMPLE);
 
 			ServiceContext<Void> ctx = new ServiceContext<Void>();
 			ctx.setOwnerId(0L);
